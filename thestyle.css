@@ -1,0 +1,32 @@
+.flag {
+  border-radius: 0%;
+  border: 1px;
+  box-shadow: inset;
+  margin-top: 1rem;
+  height: 30px;
+  width: 40px;
+}
+
+.male {
+  border-color: #448aff;
+}
+
+.female {
+  border-color: #ff80ab;
+  color: #ffffff;
+}
+
+.scrollable-container {
+
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.scrollable {
+  display: block;
+  height: 400px;
+  padding: 15px;
+  overflow-x: auto;
+  width: 100%;
+}

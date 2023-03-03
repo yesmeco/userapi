@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./materialize/materialize.min.css" />
+    <link rel="stylesheet" href="./thestyle.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Generate User</title>
+</head>
+
+<body>
+    <div id="app" class="">
+        <header>
+
+            <nav>
+                <div class="nav-wrapper indigo accent-3">
+                    <a href="#" class="brand-logo"><i class="material-icons">person_pin</i> User generator</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col s4 m6 l6 scrollable-container" style="padding: 30px;">
+                        <h2>Friends</h2>
+                        <div class="scrollable">
+                            <div v-if="friends.length>0">
+
+                                <div v-for="persona in friends">
+                                    <div class="row">
+                                        <img class="circle responsive-img" class="col s2 m2 l2"
+                                            :src="persona.picture.thumbnail"
+                                            :alt="`${persona.name.first} ${persona.name.last}`" />
+                                        <h6 class="col s8 m8 l8">{{persona.name.first}} {{persona.name.last}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-else>
+                                <h6 class="grey-text">No friend(s) added yet.</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s8 m6 l6 center-align grey lighten-3" style="padding: 60px 10px;">
+                        <div class="scale-transition">
+                            <div>
+                                <div v-for="(persona,key,index) in persona">
+                                    <img class="z-depth-5 circle responsive-img" :src="persona.picture.large"
+                                        :alt="`${persona.name.last} ${persona.name.last}`" />
+                                    <h3 class="blue-grey-text darken-4">{{persona.name.title}} {{persona.name.first}}
+                                        {{persona.name.last}}</h3>
+                                    <h6><i class="material-icons">email</i> {{persona.email}}</h6>
+                                    <h6><i class="material-icons">local_phone</i> {{persona.phone}}</h6>
+                                    <h6><i class="material-icons">location_on</i> {{persona.location.street.number}}
+                                        {{persona.location.street.name}}, {{persona.location.city}}</h6>
+                                    <span><img class="flag" :src="natflag" :alt="persona.nat"
+                                            crossorigin="anonymous" /></span>
+                                    <h5>{{persona.location.state}}, {{persona.location.country}} </h5>
+                                    <div class="row center-align ">
+
+                                        <button class="col s6 btn blue-grey" v-on:click="addFriend(persona)"><i
+                                                class="material-icons">add</i>Add friend</button>
+                                        <button v-on:click="getUser()"
+                                            :class="{'pink accent-1':gender==='female','blue accent-2':gender==='male'}"
+                                            class="col s6 waves-effect waves-light btn">Next</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="page-footer blue-grey lighten-5">
+            <div class="footer-copyright">
+                <div class="container">© 2020 Copyright Text</div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./app.js"></script>
+    <script src="./materialize/materialize.min.js"></script>
+</body>
+
+</html>
